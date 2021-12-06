@@ -53,7 +53,7 @@ exports.checkAccountNameUnique = async (req, res, next) => {
 exports.checkAccountId = async  (req, res, next) => {
   try {
     const account = await Accounts.getById(req.params.id)
-    if(acount) {
+    if(account) {
       req.account = account
       next()
     } else {

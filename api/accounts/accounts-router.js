@@ -15,8 +15,13 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:id', (req, res, next) => {
-  
+router.get('/:id', checkAccountId, (req, res, next) => {
+  try {
+    const account = req.account
+    res.status(200).json(account)
+  } catch (err) {
+    next(err)
+  }
 })
 
 router.post('/', (req, res, next) => {
