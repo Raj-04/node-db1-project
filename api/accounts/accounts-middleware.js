@@ -15,12 +15,12 @@ exports.checkAccountPayload = (req, res, next) => {
   } else if(name.trim().length < 3 || name.trim().length > 100) {
     next({
       status: 400,
-      message: 'name of account must be betwen 3 and 100'
+      message: 'name of account must be between 3 and 100'
     })
-  } else if(typeof budget !== 'number') {
+  } else if(typeof budget !== 'number' || isNaN(budget)) {
     next({
       status: 400,
-      message: 'budget of account must be a number '
+      message: 'budget of account must be a number'
     })
   } else if(budget < 0 || budget > 1000000) {
     next({
